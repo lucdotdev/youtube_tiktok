@@ -3,7 +3,7 @@ const fs = require("fs");
 const { getTikByUserName } = require("./src/scraping");
 const { editVideo } = require("./src/editor");
 const { downloadvideo, storeJson } = require("./src/utils");
-const { uploadVideoToYoutube } = require("./src/upload");
+const { uploadVideoToYoutube } = require("./src/upload2");
 const { description } = require("./src/constant");
 
 async function doTheJob(result) {

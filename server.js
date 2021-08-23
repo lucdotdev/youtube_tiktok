@@ -1,5 +1,6 @@
 const app = require('express')();
 const {doTheJob} = require('./tikitoku');
+const {authGoogle} = require("./src/auth2");
 
 app.get('/', (req, res) => {    
     res.send('Hello World!');
@@ -15,5 +16,8 @@ app.post('/tikitoku/byusername',async (req, res) => {
     res.send(url);
  })
 
-app.listen(3000, () => {    
+app.listen(3000, () => {  
+    
+    authGoogle();
+    console.log("App listen to ") 
 });
