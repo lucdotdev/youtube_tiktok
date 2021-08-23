@@ -1,6 +1,6 @@
 const { v4 } = require("uuid");
 const fs = require("fs");
-const { getTikByUserName } = require("./src/scraping");
+
 const { editVideo } = require("./src/editor");
 const { downloadvideo, storeJson } = require("./src/utils");
 const { uploadVideoToYoutube } = require("./src/upload2");
@@ -11,7 +11,7 @@ async function doTheJob(result) {
   //download video
 
   for (let i = 0; i < result.collector.length; i++) {
-    let to = `./temp/${userName}${i}`;
+    let to = `./temp/${v4()}`;
     let path = await downloadvideo(
       result.collector[i].videoUrl,
       result.headers,
