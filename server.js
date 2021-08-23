@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const {doTheJob} = require('./tikitoku');
+const {getTikByUserName}= require("./src/scraping")
 const {authGoogle} = require("./src/auth2");
 
 app.use(express.json())
