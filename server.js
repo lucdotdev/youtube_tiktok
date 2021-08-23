@@ -7,13 +7,17 @@ app.get('/', (req, res) => {
 }
 );
 
-app.post('/tikitoku/byusername',async (req, res) => {   
+app.post('/tikitoku/byusername',async (req, res) => { 
+    
+    
     const userName = req.body.userName;
     const number = req.body.number;
+
+    res.send("wait");
     const result = await getTikByUserName(number, userName);
     const url = await doTheJob(result);
 
-    res.send(url);
+  
  })
 
 app.listen(process.env.PORT || 5000, () => {  
