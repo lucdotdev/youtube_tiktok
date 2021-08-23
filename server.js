@@ -16,7 +16,7 @@ app.post('/tikitoku/byusername',async (req, res) => {
     res.send(url);
  })
 
-app.listen(3000, () => {  
+app.listen(process.env.PORT || 5000, () => {  
     
     authGoogle();
     console.log("App listen to ") 
