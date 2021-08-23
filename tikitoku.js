@@ -25,7 +25,7 @@ async function doTheJob(result) {
     console.log(path);
   }
   // //edit videos
-  let path = await editVideo(paths, `./out/${userName}${v4()}.mp4`, {});
+  let path = await editVideo(paths, `./out/${v4()}.mp4`, {});
 
   let url = await uploadVideoToYoutube(path, {
     title: `Best of compilation, funny videos`,
