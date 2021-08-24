@@ -14,6 +14,7 @@
     "axios": "^0.21.1",
     "editly": "^0.11.1",
     "express": "^4.17.1",
+    "googleapis": "^84.0.0",
     "tiktok-scraper": "^1.4.36",
     "uuid": "^8.3.2"
   }
