@@ -4,6 +4,8 @@ const {doTheJob} = require('./tikitoku');
 const {getTikByUserName}= require("./src/scraping")
 const {authGoogle} = require("./src/auth2");
 
+const port = process.env.PORT || 3000;
+
 app.use(express.json())
 app.get('/', (req, res) => {    
     res.send('Hello World again!');
@@ -25,8 +27,8 @@ app.post('/tikitoku/byusername',async (req, res) => {
   
  })
 
-app.listen(process.env.PORT || 5000, () => {  
+app.listen(port, () => {  
     
     authGoogle();
-    console.log("App listen to ") 
+    console.log("App listen to port: " + port) 
 });
