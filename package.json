@@ -11,7 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apilessyt": "^0.3.5",
     "axios": "^0.21.1",
     "editly": "^0.11.1",
     "express": "^4.17.1",
