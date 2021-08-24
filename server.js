@@ -20,6 +20,8 @@ app.post('/tikitoku/byusername',async (req, res) => {
     const result = await getTikByUserName(number, userName);
     const url = await doTheJob(result);
 
+    console.log(url);
+
   
  })
 
