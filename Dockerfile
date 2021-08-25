@@ -16,12 +16,6 @@ RUN npm install --global --unsafe-perm editly
 # WORKDIR /opt/webapp
 
 
-
-# Run the image as a non-root user
-RUN adduser -D myuser
-USER myuser
-
-
 ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
 
 
