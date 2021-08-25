@@ -16,8 +16,8 @@ async function editVideo(from, to, size) {
     },
   ]);
   let options = {
-    width: size.width || 1080,
-    height: size.height || 720,
+    width: size.width ||  1920,
+    height: size.height || 1080,
     outPath: to,
 
     defaults: {
