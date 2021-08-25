@@ -12,15 +12,18 @@ RUN set -xe \
 RUN npm install --global --unsafe-perm editly
 
 
-ADD ./webapp /opt/webapp/
-WORKDIR /opt/webapp
+# ADD ./webapp /opt/webapp/
+# WORKDIR /opt/webapp
 
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
 
 # Run the image as a non-root user
 RUN adduser -D myuser
 USER myuser
+
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
+
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
