@@ -2,18 +2,14 @@
   "name": "youtube_tiktok",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "engines": {
-    "node": "12.18.x",
-    "npm": "7.21.x"
-  },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "editly": "^0.11.1",
@@ -21,6 +17,5 @@
     "googleapis": "^84.0.0",
     "tiktok-scraper": "^1.4.36",
     "uuid": "^8.3.2"
-    
   }
 }
