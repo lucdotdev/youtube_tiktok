@@ -1,5 +1,5 @@
 const { v4 } = require("uuid");
-const fs = require("fs/promises");
+const fs = require("fs");
 
 const { editVideo } = require("./src/editor");
 const { downloadvideo, storeJson } = require("./src/utils");
@@ -33,9 +33,9 @@ async function doTheJob(result) {
   });
   console.log(url);
 
-  paths.forEach((path) => await fs.unlink(path, (err) => console.log(err)));
+  paths.forEach((path) =>  fs.unlink(path, (err) => console.log(err)));
 
-  await fs.unlink(path);
+   fs.unlink(path);
 
   console.log("Video uploaded with succes to " + url);
 
