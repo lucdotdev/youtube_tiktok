@@ -40,6 +40,7 @@ async function doTheJob(result) {
   console.log("Video uploaded with succes to " + url);
 
   return url;
+  
 }
 
 module.exports = { doTheJob };
