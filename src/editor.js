@@ -10,13 +10,11 @@ async function editVideo(from, to, size) {
     });
   });
 
-  clips.concat([
-    {
-      layers: [{ type: "video", path: outro, resizeMode: "conver" }],
-    },
-  ]);
+  clips.push({
+    layers: [{ type: "video", path: outro, resizeMode: "conver" }],
+  });
   let options = {
-    width: size.width ||  1920,
+    width: size.width || 1920,
     height: size.height || 1080,
     outPath: to,
 
