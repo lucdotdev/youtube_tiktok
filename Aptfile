@@ -1,2 +1,4 @@
 xvfb
 libnotify4
+xserver-xorg-dev 
+libxext-dev
