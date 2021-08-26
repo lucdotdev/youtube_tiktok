@@ -22,11 +22,9 @@ ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_a
 RUN chmod 0777 /usr/bin/dumb-init
 
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "-s", "-ac -screen 0 1280x1024x24"]
-
 EXPOSE $PORT
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
-CMD npm start
+CMD npm start && xvfb-run -s -ac -screen 0 1280x1024x24
 
 
