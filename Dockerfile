@@ -9,6 +9,8 @@ RUN set -xe \
  && ffprobe -version \
  && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
+COPY package.json .
 RUN npm install --global --unsafe-perm editly
 
 
@@ -18,7 +20,7 @@ RUN npm install --global --unsafe-perm editly
 
 #ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
 
-
+EXPOSE $PORT
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku			
 CMD npm start
