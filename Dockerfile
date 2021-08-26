@@ -10,12 +10,15 @@ RUN set -xe \
  && rm -rf /var/lib/apt/lists/*
 
 
-RUN npm install --global --unsafe-perm editly
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app
+
+RUN npm install
+
+
 
 # ADD ./webapp /opt/webapp/
 # WORKDIR /opt/webapp
