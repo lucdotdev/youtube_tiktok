@@ -1,5 +1,5 @@
-FROM node:14.15.0
-
+FROM node:14.7
+# FROM nikolaik/python-nodejs:latest
 RUN apt-get update && apt-get install -y \
     libcairo2-dev \
     libpango1.0-dev \
@@ -12,13 +12,11 @@ RUN apt-get update && apt-get install -y \
     python2.7 \
     python-pip \
     ffmpeg \
-    xvfb \
-    libgl 
-
+    xvfb
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
+# #
 # ## Install app dependencies
 COPY package.json /usr/src/app/
 
@@ -29,6 +27,5 @@ RUN chmod 0777 /usr/bin/dumb-init
 # Bundle app source
 COPY . /usr/src/app
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "-s", "-ac -screen 0 1280x1024x24", "node", "server.js"]
-
-
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "-s", "-ac -screen 0 1280x1024x24"]
+CMD [ "node", "server.js" ]
