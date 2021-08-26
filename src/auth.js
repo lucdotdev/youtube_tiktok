@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const FS = require("fs");
 
 const readline = require("readline");
 const { google } = require("googleapis");
@@ -10,9 +11,7 @@ var SCOPES = [
   "https://www.googleapis.com/auth/youtube.readonly",
   "https://www.googleapis.com/auth/youtube.upload",
 ];
-var TOKEN_DIR =
-  (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) +
-  "/.credentials/";
+var TOKEN_DIR = "./credentials";
 var TOKEN_PATH = TOKEN_DIR + "youtube-nodejs-quickstart.json";
 
 async function authorize(credentials) {
@@ -54,13 +53,13 @@ async function getNewToken(oauth2Client) {
 
 function storeToken(token) {
   try {
-    fs.mkdirSync(TOKEN_DIR);
+    FS.mkdirSync(TOKEN_DIR);
   } catch (err) {
     if (err.code != "EEXIST") {
       throw err;
     }
   }
-  fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+  FS.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
     if (err) throw err;
     console.log("Token stored to " + TOKEN_PATH);
   });
