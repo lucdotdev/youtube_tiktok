@@ -9,8 +9,10 @@ RUN set -xe \
  && ffprobe -version \
  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-COPY package.json .
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
 RUN npm install --global --unsafe-perm editly
 
 
