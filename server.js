@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const {authorise} = require('./src/auth2')
 const {doTheJob} = require('./tikitoku');
 const {getTikByUserName}= require("./src/scraping")
 
@@ -30,7 +31,6 @@ app.post('/tikitoku/byusername',async (req, res) => {
  })
 
 app.listen(port, () => {  
-    
-   
+    authorise();
     console.log("App 🧥 listen to port : " + port) 
 });

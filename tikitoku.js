@@ -3,44 +3,43 @@ const fs = require("fs");
 
 const { editVideo } = require("./src/editor");
 const { downloadvideo, storeJson } = require("./src/utils");
-const { uploadVideoToYoutube } = require("./src/upload");
+const { uploadVideoToYoutube } = require("./src/upload2");
 const { description } = require("./src/constant");
 
 async function doTheJob(result) {
-  // const paths = [];
+  const paths = [];
 
-  // //download video
-  // for (let i = 0; i < result.collector.length; i++) {
-  //   let to = `./temp/${v4()}`;
-  //   let path = await downloadvideo(
-  //     result.collector[i].videoUrl,
-  //     result.headers,
-  //     to
-  //   );
-  //   if (path == null) {
-  //     console.log("download video failed");
-  //     continue;
-  //   }
-  //   paths.push(path);
-  //   console.log(path);
-  // }
+  //download video
+  for (let i = 0; i < result.collector.length; i++) {
+    let to = `./temp/${v4()}`;
+    let path = await downloadvideo(
+      result.collector[i].videoUrl,
+      result.headers,
+      to
+    );
+    if (path == null) {
+      console.log("download video failed");
+      continue;
+    }
+    paths.push(path);
+    console.log(path);
+  }
 
   //edit videos
-  let path =  ""
-  // await editVideo(paths, `./out/${v4()}.mp4`, {});
+  let path = await editVideo(paths, `./out/${v4()}.mp4`, {});
 
   let url = await uploadVideoToYoutube(path, {
     title: `Best of Compilation, funny videos`,
     description: description,
   });
 
-  // console.log(url);
+  console.log(url);
 
-  // paths.forEach((path) => fs.unlink(path, (err) => console.log(err)));
+  paths.forEach((path) => fs.unlink(path, (err) => console.log(err)));
 
-  // fs.unlink(path);
+  fs.unlink(path);
 
-  // console.log("Video uploaded with succes to " + url);
+  console.log("Video uploaded with succes to " + url);
 
   return url;
 }
