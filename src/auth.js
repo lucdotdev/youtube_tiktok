@@ -11,7 +11,7 @@ var SCOPES = [
   "https://www.googleapis.com/auth/youtube.readonly",
   "https://www.googleapis.com/auth/youtube.upload",
 ];
-var TOKEN_DIR = "./credentials";
+var TOKEN_DIR = "./credentials/";
 var TOKEN_PATH = TOKEN_DIR + "youtube-nodejs-quickstart.json";
 
 async function authorize(credentials) {
