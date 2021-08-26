@@ -1,4 +1,4 @@
-FROM heroku/heroku
+FROM node:14.15.0
 
 RUN set -xe \
  && apt update \
@@ -16,7 +16,7 @@ RUN npm install --global --unsafe-perm editly
 # WORKDIR /opt/webapp
 
 
-# ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
 
 
 # Run the app.  CMD is required to run on Heroku
