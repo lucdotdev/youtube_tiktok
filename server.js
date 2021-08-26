@@ -14,16 +14,18 @@ app.get('/', (req, res) => {
 
 app.post('/tikitoku/byusername',async (req, res) => { 
     
+    try{
+        const userName = req.body.userName;
+        const number = req.body.number;
     
-    const userName = req.body.userName;
-    const number = req.body.number;
-
-    res.send("wait");
-    const result = await getTikByUserName(number, userName);
-    const url = await doTheJob(result);
-
-    console.log(url);
-
+       
+        const result = await getTikByUserName(number, userName);
+        const url = await doTheJob(result);
+        console.log(url);
+        res.send(url);
+    } catch(e){
+        res.send(e);
+    }
   
  })
 

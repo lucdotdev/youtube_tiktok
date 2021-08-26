@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+
 const readline = require("readline");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
@@ -20,14 +21,13 @@ async function authorize(credentials) {
   var redirectUrl = credentials.installed.redirect_uris[0];
   var oauth2Client = new OAuth2(clientId, clientSecret, redirectUrl);
 
-  // Check if we have previously stored a token.
-  let file = await fs.readFile(TOKEN_PATH);
-
-  if (file === null) {
-    oauth2Client.credentials = await getNewToken(oauth2Client);
-  } else {
+  try {
+    const file = await fs.readFile(TOKEN_PATH);
     oauth2Client.credentials = JSON.parse(file);
+  } catch (_) {
+    oauth2Client.credentials = await getNewToken(oauth2Client);
   }
+
   return oauth2Client;
 }
 

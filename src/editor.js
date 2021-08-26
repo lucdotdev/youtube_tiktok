@@ -32,6 +32,7 @@ async function editVideo(from, to, size) {
 
   await editly(options).catch((e) => {
     console.log(e);
+    throw e;
   });
 
   return new Promise((resolve, reject) => {

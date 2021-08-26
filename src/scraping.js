@@ -1,6 +1,6 @@
 const TikTokScraper = require("tiktok-scraper");
 
-const {sid_tt} = require("./constant")
+const { sid_tt } = require("./constant");
 
 async function getTikByUserName(number, name) {
   try {
@@ -12,7 +12,7 @@ async function getTikByUserName(number, name) {
     return posts;
   } catch (error) {
     console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -27,8 +27,7 @@ async function getTikByUserId(number, id) {
     });
     return posts;
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -41,8 +40,7 @@ async function getTikByTrending(number, name) {
     });
     return posts;
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -55,8 +53,7 @@ async function getTikByHashTag(number, name) {
     });
     return posts;
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -68,8 +65,7 @@ async function getTikProfile(name) {
     const user = await TikTokScraper.getUserProfileInfo(name, options);
     return user;
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -81,8 +77,7 @@ async function getTikHashTag(name) {
     const hashtag = await TikTokScraper.getHashtagInfo(name, options);
     console.log(hashtag);
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
@@ -95,10 +90,16 @@ async function getTikVideo(url) {
     const videoMeta = await TikTokScraper.getVideoMeta(url, options);
     return videoMeta;
   } catch (error) {
-    console.log(error);
-    return null;
+    throw error;
   }
 }
 
-module.exports = {getTikByHashTag, getTikByUserId, getTikByUserName, getTikByTrending, getTikHashTag, 
-    getTikProfile, getTikVideo};
+module.exports = {
+  getTikByHashTag,
+  getTikByUserId,
+  getTikByUserName,
+  getTikByTrending,
+  getTikHashTag,
+  getTikProfile,
+  getTikVideo,
+};

@@ -22,8 +22,10 @@ async function downloadvideo(url, headers, filename) {
       resolve(file);
     });
 
-    response.data.on("error", () => {
+    response.data.on("error", (error) => {
+
       reject(null);
+      throw error;
     });
   });
 }
