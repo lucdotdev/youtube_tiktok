@@ -1,4 +1,4 @@
-FROM node:lts-buster
+FROM heroku/heroku
 
 RUN set -xe \
  && apt update \
@@ -13,7 +13,7 @@ RUN npm install --global --unsafe-perm editly
 
 
 # ADD ./webapp /opt/webapp/
-WORKDIR /opt/webapp
+# WORKDIR /opt/webapp
 
 
 # ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
