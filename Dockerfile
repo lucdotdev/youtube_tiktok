@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
     python2.7 \
     python-pip \
     ffmpeg \
-    xvfb
+    xvfb \
+    libgl 
 
 # Create app directory
 RUN mkdir -p /usr/src/app
