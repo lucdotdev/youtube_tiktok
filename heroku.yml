@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: npm start
+  web: xvfb-run --server-args="-screen 0 1920x1080x30" npm start
