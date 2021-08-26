@@ -27,5 +27,4 @@ RUN chmod 0777 /usr/bin/dumb-init
 # Bundle app source
 COPY . /usr/src/app
 
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "-s", "-ac -screen 0 1280x1024x24"]
-CMD [ "node", "server.js" ]
+CMD xvfb-run --server-args="-screen 0 1024x768x24" npm start
