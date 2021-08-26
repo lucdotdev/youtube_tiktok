@@ -18,13 +18,11 @@ COPY . /usr/src/app
 
 RUN npm install
 
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/bin/dumb-init
+RUN chmod 0777 /usr/bin/dumb-init
 
 
-# ADD ./webapp /opt/webapp/
-# WORKDIR /opt/webapp
-
-
-#ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "--server-args", "-screen 0 1280x1024x24 -ac", "editly"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--", "xvfb-run", "-s", "-ac -screen 0 1280x1024x24"]
 
 EXPOSE $PORT
 # Run the app.  CMD is required to run on Heroku
