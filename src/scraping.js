@@ -10,6 +10,7 @@ async function getTikByUserName(number, name) {
     });
 
     return posts;
+    
   } catch (error) {
     console.log(error);
     throw error;

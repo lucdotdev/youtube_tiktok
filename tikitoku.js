@@ -8,10 +8,12 @@ const { description } = require("./src/constant");
 
 async function doTheJob(result) {
   const paths = [];
+  const name = "";
 
   //download video
   for (let i = 0; i < result.collector.length; i++) {
     let to = `./temp/${v4()}`;
+    name = result.collector[i].authorMeta.name;
     let path = await downloadvideo(
       result.collector[i].videoUrl,
       result.headers,
@@ -29,7 +31,7 @@ async function doTheJob(result) {
   let path = await editVideo(paths, `./out/${v4()}.mp4`, {});
 
   let url = await uploadVideoToYoutube(path, {
-    title: `Best of Compilation, funny videos`,
+    title: `Best of @${name} Compilation`,
     description: description,
   });
 
