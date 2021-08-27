@@ -8,7 +8,7 @@ const { description } = require("./src/constant");
 
 async function doTheJob(result) {
   const paths = [];
-  const name = "";
+  let name = "";
 
   //download video
   for (let i = 0; i < result.collector.length; i++) {
@@ -32,7 +32,7 @@ async function doTheJob(result) {
 
   let url = await uploadVideoToYoutube(path, {
     title: `Best of @${name} Compilation`,
-    description: description,
+    description: description(name, 1, "https://youtu.be/O4uuzORU7KM"),
   });
 
   console.log(url);
