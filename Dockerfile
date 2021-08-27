@@ -56,4 +56,4 @@ RUN chmod 0777 /usr/bin/dumb-init
 # Bundle app source
 COPY . /usr/src/app
 EXPOSE 3000
-CMD npm start
+CMD xvfb-run --server-args="-screen 0 1920x1080x30" npm start
