@@ -3,7 +3,7 @@ const intro = "./assets/intro.mp4";
 const outro = "./assets/outro.mp4";
 const yt_email = "tikitokuvids@gmail.com";
 const yt_password = "348i=eBYCw|el^%4";
-async function description(name ,number, video) {
+function description(name ,number, video) {
     
     return `
 Best TikTok of ${name} Compilation #${number} 😎😋😎
