@@ -8,7 +8,7 @@ async function uploadVideoToYoutube(path, metadata) {
     pageOne: {
         title: metadata.title,
         description:metadata.description,
-        thumb: string,                      // Filepath to the Thumbnail
+        //thumb: string,                      // Filepath to the Thumbnail
         // playlists?: string[];                // Write the name of the (existing)playlists you want to add your video to as a string array
         // madeForKids?: boolean;
         // restrictForAdultsOnly?: boolean;
