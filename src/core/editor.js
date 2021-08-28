@@ -4,6 +4,10 @@ const editly = require("editly");
 async function editVideo(from, to, size) {
   let clips = [];
 
+  if(size!== undefined){
+
+  }
+
   from.forEach((e) => {
     clips.push({
       layers: [{ type: "video", path: e, resizeMode: "contain-blur" }],
@@ -17,6 +21,7 @@ async function editVideo(from, to, size) {
     width: size.width || 1920,
     height: size.height || 1080,
     outPath: to,
+    
 
     defaults: {
       transition: { duration: 2 },
@@ -28,6 +33,7 @@ async function editVideo(from, to, size) {
         layers: [{ type: "video", path: intro, resizeMode: "conver" }],
       },
     ].concat(clips),
+    fast: true
   };
 
   await editly(options).catch((e) => {

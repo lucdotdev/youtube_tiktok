@@ -1,12 +1,11 @@
 const fs = require("fs");
 const Axios = require("axios");
+const twilio = require("twilio")(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN);
+
 // download video from url and store it localy with fs
 
 async function downloadvideo(url, headers, filename) {
-  const options = {
-    url: url,
-    headers: headers,
-  };
+  
   var file;
 
   const response = await Axios({
@@ -30,6 +29,24 @@ async function downloadvideo(url, headers, filename) {
   });
 }
 
+//a function to get external ip address of the machine
+function getIPAddress() {
+  return new Promise((resolve, reject) => {
+    Axios.get("https://api.ipify.org?format=json")
+      .then((res) => {
+        resolve(res.data.ip);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+}
+//a function to notify when a task is completed
+function notifyBySms(msg) {
+   twilio.messages.create({body: msg, from: '+18595188121', to: '+243975494741'})
+   .then(message => console.log(message.sid));
+
+}
 // store a json file from object to file system
 
 function storeJson(obj, filename) {
@@ -38,4 +55,4 @@ function storeJson(obj, filename) {
   file.end();
 }
 
-module.exports = { downloadvideo, storeJson };
+module.exports = { downloadvideo, storeJson, notifyBySms, getIPAddress };

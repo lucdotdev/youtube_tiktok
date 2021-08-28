@@ -1,23 +1,22 @@
 const { v4 } = require("uuid");
 const fs = require("fs");
 
-const { editVideo } = require("./src/editor");
-const { downloadvideo, storeJson } = require("./src/utils");
-const { uploadVideoToYoutube } = require("./src/upload2");
-const { description } = require("./src/constant");
+const { editVideo } = require("./src/core/editor");
+const { downloadvideo, storeJson } = require("./src/core/utils");
+const { uploadVideoToYoutube } = require("./src/core/upload2");
+const { description } = require("./src/core/constant");
 
-async function doTheJob(result) {
+async function runTheJob(result) {
   const paths = [];
   let name = "";
 
-  //download video
   for (let i = 0; i < result.collector.length; i++) {
-    let to = `./temp/${v4()}`;
+    let destination = `./temp/${v4()}`;
     name = result.collector[i].authorMeta.name;
     let path = await downloadvideo(
       result.collector[i].videoUrl,
       result.headers,
-      to
+      destination
     );
     if (path == null) {
       console.log("download video failed");
@@ -35,8 +34,6 @@ async function doTheJob(result) {
     description: description(name, 1, "https://youtu.be/O4uuzORU7KM"),
   });
 
-  console.log(url);
-
   paths.forEach((path) => fs.unlink(path, (err) => console.log(err)));
 
   fs.unlink(path);
@@ -46,4 +43,4 @@ async function doTheJob(result) {
   return url;
 }
 
-module.exports = { doTheJob };
+module.exports = { runTheJob };

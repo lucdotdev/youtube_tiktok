@@ -5,14 +5,12 @@ const readline = require("readline");
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
-// If modifying these scopes, delete your previously saved credentials
-// at ~/.credentials/youtube-nodejs-quickstart.json
 var SCOPES = [
   "https://www.googleapis.com/auth/youtube.readonly",
   "https://www.googleapis.com/auth/youtube.upload",
 ];
 var TOKEN_DIR = "./credentials/";
-var TOKEN_PATH = TOKEN_DIR + "youtube-nodejs-quickstart.json";
+var TOKEN_PATH = TOKEN_DIR + "my_credential.json";
 
 async function authorize(credentials) {
   var clientSecret = credentials.installed.client_secret;
