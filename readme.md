@@ -1,2 +1,2 @@
-#Introduction
-A tiktok video scrapping that upload to youtube and get money from advertising
+
+A tool that scrap TikTok videos, edit it and upload it to YouTube 🍆🙈🙉
