@@ -15,7 +15,7 @@ async function editVideo(from, to, size) {
   });
 
   clips.push({
-    layers: [{ type: "video", path: outro, resizeMode: "conver" }],
+    layers: [{ type: "video", path: outro, resizeMode: "cover" }],
   });
   let options = {
     width: size.width || 1920,
@@ -30,7 +30,7 @@ async function editVideo(from, to, size) {
     keepSourceAudio: true,
     clips: [
       {
-        layers: [{ type: "video", path: intro, resizeMode: "conver" }],
+        layers: [{ type: "video", path: intro, resizeMode: "cover" }],
       },
     ].concat(clips),
     fast: true
